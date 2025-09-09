@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>تهاني عيد الميلاد 🎉</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    overflow-x: hidden;
+  }
+
+  h1 {
+    font-size: 3em;
+    color: #fff;
+    text-shadow: 2px 2px 10px #000;
+    animation: fadeInDown 1.5s ease;
+    margin-bottom: 40px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto 60px auto;
+  }
+
+  .card {
+    position: relative;
+    background: #fff;
+    border-radius: 20px;
+    padding: 60px 20px 20px 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-15px) rotate(1deg);
+    box-shadow: 0 20px 35px rgba(0,0,0,0.5);
+  }
+
+  .card img {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+
+  .card h2 {
+    margin-top: 50px;
+    font-size: 1.4em;
+    color: #ff4500;
+  }
+
+  .messageBox {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff3e0;
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 500px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    z-index: 100;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+  }
+
+  .messageBox img {
+    width: 150px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+  }
+
+  .messageBox p {
+    font-size: 1.2em;
+    color: #333;
+  }
+
+  .messageBox button {
+    margin-top: 20px;
+    padding: 10px 25px;
+    font-size: 1em;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    background: #ff4500;
+    color: #fff;
+  }
+
+  #certificate {
+    margin-top: 60px;
+    padding: 50px 30px;
+    background: linear-gradient(135deg, #ffe259, #ffa751);
+    border-radius: 30px;
+    font-size: 2em;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    animation: bounceIn 1s ease;
+    text-shadow: 2px 2px 5px #000;
+  }
+
+  /* Animations */
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+  @keyframes fadeInDown {
+    from {opacity: 0; transform: translateY(-50px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+
+  @keyframes bounceIn {
+    0% {transform: scale(0);}
+    60% {transform: scale(1.2);}
+    100% {transform: scale(1);}
+  }
+</style>
+</head>
+<body>
+
+<h1>🎉 عيد ميلاد سعيد! 🎉</h1>
+
+<div class="grid">
+  <div class="card" onclick="showMessage(1)"><img src="كوشينا.jpeg" alt="صديق 1"><h2> كوشينا المكشنة بالمكاشن</h2></div>
+  <div class="card" onclick="showMessage(2)"><img src="شادو.jpeg" alt="صديق 2"><h2>شادو المشدشد بالمشادد</h2></div>
+  <div class="card" onclick="showMessage(3)"><img src="ثورفين.jpeg" alt="صديق 3"><h2>ثورفين المثرفن بالمثافر</h2></div>
+  <div class="card" onclick="showMessage(4)"><img src="مامارو.jpeg" alt="صديق 4"><h2>هايسو المهسهسة بالمهاسس</h2></div>
+  <div class="card" onclick="showMessage(5)"><img src="يوليوس.jpeg" alt="صديق 5"><h2>يوليوس الميليس بالملايس</h2></div>
+  <div class="card" onclick="showMessage(6)"><img src="https://via.placeholder.com/80" alt="صديق 6"><h2>صديق 6</h2></div>
+  <div class="card" onclick="showMessage(7)"><img src="https://via.placeholder.com/80" alt="صديق 7"><h2>صديق 7</h2></div>
+</div>
+
+<!-- نافذة الرسائل -->
+<div id="messageBox" class="messageBox">
+  <img id="msgImg" src="" alt="صورة الصديق">
+  <h2 id="msgName">اسم الصديق</h2>
+  <p id="msgText">رسالة الصديق هنا</p>
+  <button onclick="closeMessage()">رجوع</button>
+</div>
+
+<div id="certificate">🏆 شهادة تقدير: أنت أفضل صديق! 🏆</div>
+
+<script>
+  const messages = {
+    1: {name: "كوشينا المكشنة بالمكاشن", img: "كوشينا.jpeg", text: "يا سونغ كل سنه وانت بألف خير وسلامه يريت تسامحني علشان ما جهزتلك هديه لكن انشا الله سنه جايه اجهزلك افصل هديه واتمنالك الهناء في حياتك رساله من اختك امنه🥰😘❤️"},
+    2: {name: "شادو المشدشد بالمشادد", img: "شادو.jpeg", text: "اهنيك يا صديقي العزيز الغالي علي عيد مولدك واتمنه من الله يكون عيد مولد سعيد عليك وتحقق كل ما تتمنه من امنيات ان شاءلله كل سنه وانت طيب وبخير وسعادة يارب العالمين وعقبال 100معانه ان شاءلله وبصحه ونشوفك دايما احسن واحد 🎀❤️يا صديقي انت احسن شخص دخلت حياتنه طبعاً اهم حاجه ههه 😂عدم الدراما كا شهر وانت يسطا كلنا بنحبك والله اليوم اللي ان شاءلله مييجي هنتفرق فيه هيكون اتعس يوم فحياتنه كلنا قلبتها حزن شكشوكه دي وحشه 😂"},
+    3: {name: "ثورفين المثرفن بالمثافر", img: "ثورفين.jpeg", text: "🎉يا سونغ الغالي🎉النهارده يوم مش عادي، يوم ميلادك اللي بيخلّيني أفتكر قد إيه وجودك في حياتي فرق كتير. يمكن الظروف مخلّتناش دايمًا مع بعض، بس يا صاحبي إنت حاضر في القلب .إنت مش مجرد صديق، إنت أخ وسند، والملصقات اللي بنرميها لبعض مجرد دليل صغير على إن روحنا خفيفة وضحكتنا صافية.وصدقني مهما كبرت الأيام،هتفضل سونغ اللي بيرفع الراس، اللي كل سنة بيكبر بس برضه بيحتفظ بنفس الروح اللي بنحبها.وعشان اليوم مميز،أتمنى لك كل خير، فرح ماينتهي، نجاح يفتحلك أبواب جديدة، وحياة مليانة راحة وبهجة. 💛كل سنة وإنت طيب يا سونغ وعقبال مية سنة من الفرح، وأوعى تنسى إن المنافسة في الملصقات لسه شغالة 😎💪من أخوك الكبير : ثورفين🥳🎂 عيد ميلاد سعيد يا أغلى صديق 🌟"},
+    4: {name: "هايسو المهسهسة بالمهاسس", img: "مامارو.jpeg", text: "كل عام و انت اكبر جحش 🦦✨🤙🏽"},
+    5: {name: "يوليوس الميليس بالملايس", img: "يوليوس.jpeg", text: "بسم الله الرحمن الرحيم أود قول عيد ميلاد سعيد سونغ نتمنى تكبر و نشرفك في عمر ال100 سنة ان شاء الله نتمنى نحقق احلامك ب اذن الله "},
+    6: {name: "سامي", img: "https://via.placeholder.com/150", text: "أتمنى لك أحلى يوم! 🎁"},
+    7: {name: "علي", img: "https://via.placeholder.com/150", text: "كل سنة وانت بخير يا صديقي الغالي! 🐤"}
+  };
+
+  function showMessage(id){
+    const msg = messages[id];
+    document.getElementById('msgImg').src = msg.img;
+    document.getElementById('msgName').innerText = msg.name;
+    document.getElementById('msgText').innerText = msg.text;
+    document.getElementById('messageBox').style.display = 'block';
+  }
+
+  function closeMessage(){
+    document.getElementById('messageBox').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
